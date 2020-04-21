@@ -5,6 +5,7 @@ public class Node : MonoBehaviour
 {
 
     public Color hoverColor;
+    public Color notEnoughtMoneyColor;
     private Color startColor;
     public GameObject turret;
 
@@ -59,7 +60,15 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        rend.material.color = hoverColor;
+
+        if (buildManager.hasMoney)
+        {
+            rend.material.color = hoverColor;
+        }
+        else
+        {
+            rend.material.color = notEnoughtMoneyColor;
+        }
     }
 
     private void OnMouseExit()

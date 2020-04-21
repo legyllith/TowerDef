@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     private Text  waveCountdownTimer;
 
-    private float countdown = 2f; // temps avant le début des vagues
+    private float countdown = 5f; // temps avant le début des vagues
 
     private int waveIndex = 0;
 
@@ -32,7 +32,9 @@ public class WaveSpawner : MonoBehaviour
         }
 
         countdown -= Time.deltaTime; // retire petit a petit du temps
-        waveCountdownTimer.text = "Procahine vagues :\n" + Mathf.Round(countdown).ToString() + " sec";
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+
+        waveCountdownTimer.text= string.Format("{0:00.00}",countdown);
     }
 
     IEnumerator SpawnWave()// fait apparraitre des vague
