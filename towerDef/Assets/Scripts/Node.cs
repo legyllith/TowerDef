@@ -50,7 +50,7 @@ public class Node : MonoBehaviour
     }
 
     private void OnMouseEnter()
-    {
+    { 
         if (EventSystem.current.IsPointerOverGameObject()) // verifié qu'il n y a rien au dessus (le canvas par exemple)
         {
             return;
