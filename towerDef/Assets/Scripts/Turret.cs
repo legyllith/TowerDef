@@ -7,6 +7,7 @@ public class Turret : MonoBehaviour
     [Header("General")]
     public float range = 15f;
     public Transform target;
+    private Enemy targetEnemy;// vas permettre de faire moins de f onctio ngetComponant en la mettant en "cache"
 
 
     [Header("Use bullets (default)")]
@@ -16,6 +17,8 @@ public class Turret : MonoBehaviour
 
     [Header("Uselaser")]
     public bool useLaser;
+    public int damageOverTime = 30;
+    public float slowAmount = 0.5f; //1=100% et 0=0%
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
@@ -31,7 +34,7 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);// fait une update
     }
 
     void UpdateTarget()
@@ -53,6 +56,7 @@ public class Turret : MonoBehaviour
         if(nearestEnnemy != null && shortestDistance <= range)
         {
             target = nearestEnnemy.transform;
+            targetEnemy = target.GetComponent<Enemy>();
         }
         else
         {
@@ -117,6 +121,8 @@ public class Turret : MonoBehaviour
 
     void Laser()
     {
+        targetEnemy.takeDammage(damageOverTime * Time.deltaTime);
+        targetEnemy.Slow(slowAmount);
         if(lineRenderer.enabled == false)
         {
             lineRenderer.enabled = true;
@@ -128,7 +134,6 @@ public class Turret : MonoBehaviour
 
         Vector3 dir = firepoint.position - target.position;
         impactEffect.transform.rotation = Quaternion.LookRotation(dir); //tourner l impact effect en regard vers la tourelle.
-
         impactEffect.transform.position = target.position + dir.normalized * 1.5f;
     }
 
