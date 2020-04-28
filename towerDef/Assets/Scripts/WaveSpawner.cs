@@ -40,6 +40,7 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave()// fait apparraitre des vague
     {
         waveIndex++;
+        PlayerStats.rounds++;
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
