@@ -34,17 +34,18 @@ public class Node : MonoBehaviour
         {
             return;
         }
+        
+        if(turret != null)
+        {
+            buildManager.SelectNode(this);
+            return; //important pour quitter le script
+        }
 
         if (!buildManager.canBuild)
         {
             return;
         }
 
-        if(turret != null)
-        {
-            Debug.Log("nop");
-            return; //important pour quitter le script
-        }
 
         buildManager.buildTurretOn(this);
     }
