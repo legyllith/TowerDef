@@ -28,29 +28,16 @@ public class BuildManager : MonoBehaviour
     public bool canBuild { get { return turretToBuild != null; } } //récupère une information, le turret to build, can build est vrai si y a un truc dans turret to build
     public bool hasMoney { get { return PlayerStats.money >= turretToBuild.cost; } } //verifie l'argent du joueur par apport au cout
 
-    public void buildTurretOn(Node node)
-    {
-
-        if(PlayerStats.money < turretToBuild.cost)
-        {
-            Debug.Log("Pas assez d'argent pour cela");
-            return;
-        }
-
-        //le joueur a assez d argent
-        PlayerStats.money -= turretToBuild.cost;
-
-        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.turret = turret;
-
-        GameObject effect = (GameObject)Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 1f);
-    }
 
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
-        DeselectNode();
         turretToBuild = turret;
+        DeselectNode();
+    }
+
+    public TurretBlueprint GetTurretToBuild()
+    {
+        return turretToBuild;
     }
 
     public void SelectNode(Node node)
