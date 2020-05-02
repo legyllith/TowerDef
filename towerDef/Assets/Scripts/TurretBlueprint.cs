@@ -11,4 +11,9 @@ public class TurretBlueprint // on ne veut pas que ce soit un monobehavior on ve
     public GameObject upgradedPrefab;
     public int upgradeCost;
 
+    public int GetSellAmount()
+    {
+        return cost / 2;
+    }
+
 }

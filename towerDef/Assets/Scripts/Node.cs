@@ -74,6 +74,19 @@ public class Node : MonoBehaviour
         Destroy(effect, 1f);
     }
 
+    public void SellTurret()
+    {
+        PlayerStats.money += turretBlueprint.GetSellAmount();
+
+        /* créez un effet */
+        GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 1f);
+
+        Destroy(turret);
+        turretBlueprint = null;
+        isUpgraded = false;
+    }
+
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject()) // verifié qu'il n y a rien au dessus (le canvas par exemple)
