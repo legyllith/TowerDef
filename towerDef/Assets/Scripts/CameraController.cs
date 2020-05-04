@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
             return;
         }
         // si j appue sur echap sa bouge pu
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             canMove = !canMove;
         }
