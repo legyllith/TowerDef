@@ -1,18 +1,23 @@
-﻿
+﻿using UnityEngine.UI;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     public float startSpeed = 10f;
     [HideInInspector] public float speed;
-    public float health = 100f;
+    public float starthealth = 100f;
+    private float health;
 
     public int worth = 50; //valeur d or gagnez a la mort.
 
     public GameObject deathEffect;
 
+    public GameObject life;
+    public Image HealthBar;
+
     public void Start()
     {
+        health = starthealth;
         speed = startSpeed;
     }
 
@@ -20,6 +25,11 @@ public class Enemy : MonoBehaviour
     public void takeDammage(float amout)
     {
         health -= amout;
+        if (!life.activeSelf)
+        {
+            life.SetActive(true);
+        }
+        HealthBar.fillAmount = health/starthealth;
         if(health <= 0)
         {
             Die();
