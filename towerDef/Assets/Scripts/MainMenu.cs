@@ -4,11 +4,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public string LevelToLoad = "Scenes"+"/"+"scene1";
+    public SceneFader sceneFader;
 
     public void Play()
     {
-        Debug.Log(LevelToLoad);
-        SceneManager.LoadScene(LevelToLoad);
+        sceneFader.FadeTo(LevelToLoad);
     }
 
     public void Quit()
