@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    [SerializeField]//voir dans l editeur
-    private Transform enemyPrefab;
+    public static int EnemiesAlive = 0;
+
+    public Wave[] waves;
 
     [SerializeField]
     private Transform spawnPoint;
@@ -25,10 +26,15 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        if(EnemiesAlive > 0)
+        {
+            return;
+        }
         if(countdown <= 0f)
         {
             StartCoroutine(SpawnWave()); //cette fonction est la methode d appeller une fonction de coroutine
             countdown = timeBetweenWaves; //remet le compteur avant la prochaine vague
+            return;
         }
 
         countdown -= Time.deltaTime; // retire petit a petit du temps
@@ -39,18 +45,28 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()// fait apparraitre des vague
     {
-        waveIndex++;
-        PlayerStats.rounds++;
-        for (int i = 0; i < waveIndex; i++)
-        {
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
-        }
         
+        PlayerStats.rounds++;
+
+        Wave wave = waves[waveIndex];
+
+        for (int i = 0; i < wave.count; i++)
+        {
+            SpawnEnemy(wave.enemy);
+            yield return new WaitForSeconds(1f/wave.rate);
+        }
+
+        waveIndex++;
+        if(waveIndex == waves.Length)
+        {
+            Debug.Log("Niveau Terminé ! bravo");
+            waveIndex--;
+        }
     }
 
-    void SpawnEnemy()// fait apparaitre 1 enemy
+    void SpawnEnemy(GameObject enemy)// fait apparaitre 1 enemy
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        EnemiesAlive++;
     }
 }
