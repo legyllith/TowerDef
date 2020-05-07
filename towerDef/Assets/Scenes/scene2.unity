@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: ed587b35b6f936e49992b9d7e411f628,
+  m_LightingDataAsset: {fileID: 112000000, guid: d157d640016b302438c980ac29cdb482,
     type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
@@ -18893,7 +18893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 400
-  startLives: 1
+  startLives: 10
 --- !u!114 &1679506269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20352,7 +20352,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
+  m_Color: {r: 0.8962264, g: 0.88354397, b: 0.88354397, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -20364,7 +20364,7 @@ Light:
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_NormalBias: 0.48
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
       e00: 1
