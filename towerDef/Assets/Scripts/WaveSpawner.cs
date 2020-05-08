@@ -22,6 +22,8 @@ public class WaveSpawner : MonoBehaviour
 
     private int waveIndex = 0;
 
+    public GameManager gameManager;
+
     
 
     void Update()
@@ -30,7 +32,12 @@ public class WaveSpawner : MonoBehaviour
         {
             return;
         }
-        if(countdown <= 0f)
+        if (waveIndex == waves.Length)
+        {
+            gameManager.WinLevel();
+            this.enabled = false;
+        }
+        if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave()); //cette fonction est la methode d appeller une fonction de coroutine
             countdown = timeBetweenWaves; //remet le compteur avant la prochaine vague
@@ -45,10 +52,11 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()// fait apparraitre des vague
     {
-        
         PlayerStats.rounds++;
 
         Wave wave = waves[waveIndex];
+
+        EnemiesAlive = wave.count;
 
         for (int i = 0; i < wave.count; i++)
         {
@@ -57,16 +65,12 @@ public class WaveSpawner : MonoBehaviour
         }
 
         waveIndex++;
-        if(waveIndex == waves.Length)
-        {
-            Debug.Log("Niveau Terminé ! bravo");
-            waveIndex--;
-        }
+        
+
     }
 
     void SpawnEnemy(GameObject enemy)// fait apparaitre 1 enemy
     {
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-        EnemiesAlive++;
     }
 }
