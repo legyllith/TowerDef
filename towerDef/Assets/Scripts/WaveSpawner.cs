@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -24,7 +23,10 @@ public class WaveSpawner : MonoBehaviour
 
     public GameManager gameManager;
 
-    
+    private void start()
+    {
+        EnemiesAlive = 0;
+    }
 
     void Update()
     {
