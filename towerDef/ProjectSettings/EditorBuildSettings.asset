@@ -6,11 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Mirror/Examples/Pong/Scenes/Scene.unity
-    guid: 89a84548859e3b643b4fb27984dc2b0d
+    path: Assets/Scenes/OfflineScene 1.unity
+    guid: bcea7b06305a1f149a8a08a0bf19807e
+  - enabled: 1
+    path: Assets/Mirror/Examples/Basic/Scenes/Example.unity
+    guid: b30904751905d3f4dacde62ac85ec7c2
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 9500f369fc0f2cf4999c433207af56fa
+  - enabled: 1
+    path: Assets/Scenes/RoomScene 1.unity
+    guid: e719b3aaffc20844da76ff5f8a7d9a77
   - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: a7f3c75153b1a8e4a9f5cf8801e84c63
@@ -20,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/scene2.unity
     guid: 5b87abc88f988dd40acc3e9666a4ce10
+  - enabled: 1
+    path: Assets/Mirror/Examples/Room/Scenes/OfflineScene.unity
+    guid: 9e6f14982412b2545a0911ebaaa46a23
+  - enabled: 1
+    path: Assets/Mirror/Examples/Room/Scenes/OnlineScene.unity
+    guid: d7a6763559b31854586c9e49916273ef
+  - enabled: 1
+    path: Assets/Mirror/Examples/Room/Scenes/RoomScene.unity
+    guid: 48478f4d522f96945b8396f376299d3a
   m_configObjects: {}
